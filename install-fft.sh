@@ -63,7 +63,7 @@ set -u # error on use of undefined variable
 case $MACHINE in
   gnu)
   CMK_FC=${CMK_FC:-"gfortran"}
-  CMK_FLAG="-O3"
+  CMK_FLAG="-O3 -fallow-argument-mismatch"
   ;;
   intel)
   CMK_FC=${CMK_FC:-"ifx"}
@@ -86,5 +86,4 @@ CMK_FLAG=${CMK_FLAG}" ${DEBUG} ${VERBOSE}"
 
 #buildit
 cmake -S . -B ${PREFIX} -DCMAKE_Fortran_COMPILER=${CMK_FC}  \
-                        -DCMAKE_Fortran_FLAGS="${CMK_FLAG}"\
-                        -DFFT_MASTER_PROJECT="ON"\
+                        -DCMAKE_Fortran_FLAGS="${CMK_FLAG}"
